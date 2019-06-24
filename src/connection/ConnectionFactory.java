@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
 
 	private final static String DRIVE = "com.mysql.jdbc.Driver";
-	private final static String URL = "jdbc:mysql://localhost:3306/oficina?useSSL=false";
+	private final static String URL = "jdbc:mysql://localhost:3306/exercicio?zeroDateTimeBehavior=convertToNull";
 	private final static String USER = "root";
 	private final static String PASS = "";
 
@@ -61,6 +61,34 @@ public class ConnectionFactory {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void closeStmt(PreparedStatement stmt) {
+		
+
+		try {
+			if (stmt != null) {
+				stmt.close();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void closeRs(PreparedStatement stmt, ResultSet rs) {
+		closeStmt(stmt);
+
+		try {
+			if (rs != null) {
+				rs.close();
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
 	
